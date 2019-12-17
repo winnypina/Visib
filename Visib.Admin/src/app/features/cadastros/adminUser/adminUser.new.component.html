@@ -1,0 +1,73 @@
+<div id="content">
+        <div sa-widget [editbutton]="false" color="blueDark">
+            <header><span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                <h2>Cadastro de usuário administrativo</h2>
+            </header>
+        </div>
+        <div class="row">
+    
+            <!-- NEW COL START -->
+            <article class="col-sm-12 col-md-12 col-lg-12">
+    
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div sa-widget>
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+    
+                        <h2>Cadastro de usuário administrativo</h2>
+    
+                    </header>
+    
+                    <!-- widget div-->
+                    <div>
+    
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+    
+                            <form class="smart-form">
+                                <!-- <header>
+                                        Standard Form Header
+                                    </header> -->
+    
+                                <fieldset>
+    
+                                    <section>
+                                        <label class="label">Email</label>
+                                        <label class="input">
+                                            <input type="text" [(ngModel)]="adminUser.email" name="email">
+                                        </label>
+                                    </section>
+    
+                                    <section>
+                                        <label class="label">Senha</label>
+                                        <label class="input">
+                                            <input type="password" [(ngModel)]="adminUser.password" name="password">
+                                        </label>
+                                    </section>
+
+                                </fieldset>
+                                <footer>
+                                    <button type="button" (click)="save()" class="btn btn-primary">
+                                        Salvar
+                                    </button>
+                                    <button type="button" class="btn btn-default" routerLink="/cadastros/adminUser">
+                                        Voltar
+                                    </button>
+                                </footer>
+                            </form>
+    
+                        </div>
+                        <!-- end widget content -->
+    
+                    </div>
+                    <!-- end widget div -->
+    
+                </div>
+                <!-- end widget -->
+    
+            </article>
+            <!-- END COL -->
+    
+    
+        </div>
+    </div>

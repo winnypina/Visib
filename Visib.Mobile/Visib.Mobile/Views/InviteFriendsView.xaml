@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:Visib.Mobile.Controls" BackgroundColor="{StaticResource AppBackgroundColor}" xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.Views.InviteFriendsView">
+    <Grid x:Name="MainGrid">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70">
+                </RowDefinition>
+                <RowDefinition Height="*">
+                </RowDefinition>
+                <RowDefinition Height="70">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Margin="0,10,0,0">
+                <Grid HeightRequest="58">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="arrow.png" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Convidar Amigos">
+                    </Label>
+                </Grid>
+                <Grid BackgroundColor="White" HeightRequest="2">
+                </Grid>
+            </StackLayout>
+            <Grid Grid.Row="1">
+                <ListView BackgroundColor="Transparent" HasUnevenRows="true" SelectionMode="None" SeparatorColor="Transparent" ItemsSource="{Binding Contacts}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Grid.Row="2">
+                                    <Grid HeightRequest="58">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*">
+                                            </ColumnDefinition>
+                                            <ColumnDefinition Width="Auto">
+                                            </ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Margin="40,0,0,0" Grid.Column="0" FontSize="20" VerticalOptions="Center" Text="{Binding Contact.Name}">
+                                        </Label>
+                                        <Frame IsVisible="{Binding IsSelected, Converter={StaticResource BooleanInverterConverter}}" Grid.Column="1" BackgroundColor="Transparent" BorderColor="White" HorizontalOptions="Center" WidthRequest="10" HeightRequest="10" CornerRadius="25" Margin="0,0,20,0" VerticalOptions="Center">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.SelectContactCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                                </TapGestureRecognizer>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                        <Frame IsVisible="{Binding IsSelected}" Grid.Column="1" BackgroundColor="#fce200" HorizontalOptions="Center" WidthRequest="10" HeightRequest="10" CornerRadius="25" Margin="0,0,20,0" VerticalOptions="Center">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.SelectContactCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                                </TapGestureRecognizer>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                    </Grid>
+                                    <Grid BackgroundColor="White" HeightRequest="2">
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Grid Padding="20,10" Grid.Row="2">
+                <Frame BackgroundColor="#008cff" Padding="0" CornerRadius="25">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding InviteCommand}" />
+                    </Frame.GestureRecognizers>
+                    <Label Text="CONVIDAR" HorizontalOptions="Center" FontSize="20" VerticalOptions="Center" />
+                </Frame>
+            </Grid>
+        </Grid>
+        <Grid IsVisible="{Binding IsLoading}">
+            <Grid BackgroundColor="{StaticResource AppBackgroundColor}" Opacity="0.8">
+            </Grid>
+            <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="White" VerticalOptions="Center">
+            </ActivityIndicator>
+        </Grid>
+    </Grid>
+</views:MvxContentPage>

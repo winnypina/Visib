@@ -1,0 +1,230 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.31.10" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="7.3.3" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Refit" Version="4.6.58" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="publish\appsettings.Development.json" />
+    <Content Remove="publish\Visib.Api.deps.json" />
+    <Content Remove="publish\Visib.Api.runtimeconfig.json" />
+    <Content Remove="publish\appsettings.json" />
+    <Content Remove="publish\aws-windows-deployment-manifest.json" />
+    <Content Remove="publish\Connected Services\Visib.Services\ConnectedService.json" />
+    <Content Remove="publish\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="publish\.DS_Store" />
+    <None Remove="publish\1.0.0.11.zip" />
+    <None Remove="publish\AWSSDK.Core.dll" />
+    <None Remove="publish\AWSSDK.S3.dll" />
+    <None Remove="publish\AutoMapper.Extensions.Microsoft.DependencyInjection.dll" />
+    <None Remove="publish\AutoMapper.dll" />
+    <None Remove="publish\FluentValidation.AspNetCore.dll" />
+    <None Remove="publish\FluentValidation.dll" />
+    <None Remove="publish\Microsoft.CodeAnalysis.CSharp.Workspaces.dll" />
+    <None Remove="publish\Microsoft.CodeAnalysis.Workspaces.dll" />
+    <None Remove="publish\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll" />
+    <None Remove="publish\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll" />
+    <None Remove="publish\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll" />
+    <None Remove="publish\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll" />
+    <None Remove="publish\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll" />
+    <None Remove="publish\Microsoft.VisualStudio.Web.CodeGeneration.dll" />
+    <None Remove="publish\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll" />
+    <None Remove="publish\NuGet.Frameworks.dll" />
+    <None Remove="publish\Refit.dll" />
+    <None Remove="publish\System.Composition.AttributedModel.dll" />
+    <None Remove="publish\System.Composition.Convention.dll" />
+    <None Remove="publish\System.Composition.Hosting.dll" />
+    <None Remove="publish\System.Composition.Runtime.dll" />
+    <None Remove="publish\System.Composition.TypedParts.dll" />
+    <None Remove="publish\System.Net.Http.WinHttpHandler.dll" />
+    <None Remove="publish\System.ServiceModel.Duplex.dll" />
+    <None Remove="publish\System.ServiceModel.Http.dll" />
+    <None Remove="publish\System.ServiceModel.NetTcp.dll" />
+    <None Remove="publish\System.ServiceModel.Primitives.dll" />
+    <None Remove="publish\System.ServiceModel.Security.dll" />
+    <None Remove="publish\System.ServiceModel.dll" />
+    <None Remove="publish\Visib.Api.dll" />
+    <None Remove="publish\Visib.Api.pdb" />
+    <None Remove="publish\dotnet-aspnet-codegenerator-design.dll" />
+    <None Remove="publish\site.zip" />
+    <None Remove="publish\runtimes\unix\lib\netstandard2.0\System.Private.ServiceModel.dll" />
+    <None Remove="publish\runtimes\win\lib\netstandard2.0\System.Net.Http.WinHttpHandler.dll" />
+    <None Remove="publish\runtimes\win7\lib\netstandard2.0\System.Private.ServiceModel.dll" />
+    <None Remove="publish\wwwroot\0.js" />
+    <None Remove="publish\wwwroot\backgroundVideo-backgroundVideo-module.js" />
+    <None Remove="publish\wwwroot\backgroundVideo-backgroundVideo-module.js.map" />
+    <None Remove="publish\wwwroot\blank-blank-module.js" />
+    <None Remove="publish\wwwroot\blank-blank-module.js.map" />
+    <None Remove="publish\wwwroot\blog-blog-module.js" />
+    <None Remove="publish\wwwroot\blog-blog-module.js.map" />
+    <None Remove="publish\wwwroot\bootstrap-editors-bootstrap-editors-module.js" />
+    <None Remove="publish\wwwroot\bootstrap-editors-bootstrap-editors-module.js.map" />
+    <None Remove="publish\wwwroot\bootstrap-editors-bootstrap-editors-module~features-outlook-outlook-module.js" />
+    <None Remove="publish\wwwroot\bootstrap-editors-bootstrap-editors-module~features-outlook-outlook-module.js.map" />
+    <None Remove="publish\wwwroot\bootstrap-elements-bootstrap-elements-module.js" />
+    <None Remove="publish\wwwroot\bootstrap-elements-bootstrap-elements-module.js.map" />
+    <None Remove="publish\wwwroot\bootstrap-validation-bootstrap-validation-module.js" />
+    <None Remove="publish\wwwroot\bootstrap-validation-bootstrap-validation-module.js.map" />
+    <None Remove="publish\wwwroot\bootstrap-validation-bootstrap-validation-module~form-layouts-form-layouts-module.js" />
+    <None Remove="publish\wwwroot\bootstrap-validation-bootstrap-validation-module~form-layouts-form-layouts-module.js.map" />
+    <None Remove="publish\wwwroot\buttons-buttons-module.js" />
+    <None Remove="publish\wwwroot\buttons-buttons-module.js.map" />
+    <None Remove="publish\wwwroot\categorias-categorias-module.js" />
+    <None Remove="publish\wwwroot\categorias-categorias-module.js.map" />
+    <None Remove="publish\wwwroot\chart-js-chart-js-showcase-module.js" />
+    <None Remove="publish\wwwroot\chart-js-chart-js-showcase-module.js.map" />
+    <None Remove="publish\wwwroot\ckeditor-ckeditor-module.js" />
+    <None Remove="publish\wwwroot\ckeditor-ckeditor-module.js.map" />
+    <None Remove="publish\wwwroot\common.js" />
+    <None Remove="publish\wwwroot\common.js.map" />
+    <None Remove="publish\wwwroot\datatables-case-datatables-case-module.js" />
+    <None Remove="publish\wwwroot\datatables-case-datatables-case-module.js.map" />
+    <None Remove="publish\wwwroot\dropzone-showcase-dropzone-showcase-module.js" />
+    <None Remove="publish\wwwroot\dropzone-showcase-dropzone-showcase-module.js.map" />
+    <None Remove="publish\wwwroot\dygraphs-dygraphs-module.js" />
+    <None Remove="publish\wwwroot\dygraphs-dygraphs-module.js.map" />
+    <None Remove="publish\wwwroot\email-template-email-template-module.js" />
+    <None Remove="publish\wwwroot\email-template-email-template-module.js.map" />
+    <None Remove="publish\wwwroot\error404-error404-module.js" />
+    <None Remove="publish\wwwroot\error404-error404-module.js.map" />
+    <None Remove="publish\wwwroot\error500-error500-module.js" />
+    <None Remove="publish\wwwroot\error500-error500-module.js.map" />
+    <None Remove="publish\wwwroot\features-app-views-app-views-module.js" />
+    <None Remove="publish\wwwroot\features-app-views-app-views-module.js.map" />
+    <None Remove="publish\wwwroot\features-auth-auth-module.js" />
+    <None Remove="publish\wwwroot\features-auth-auth-module.js.map" />
+    <None Remove="publish\wwwroot\features-cadastros-cadastros-module.js" />
+    <None Remove="publish\wwwroot\features-cadastros-cadastros-module.js.map" />
+    <None Remove="publish\wwwroot\features-dashboard-dashboard-module.js" />
+    <None Remove="publish\wwwroot\features-dashboard-dashboard-module.js.map" />
+    <None Remove="publish\wwwroot\features-e-commerce-e-commerce-module.js" />
+    <None Remove="publish\wwwroot\features-e-commerce-e-commerce-module.js.map" />
+    <None Remove="publish\wwwroot\features-forms-forms-showcase-module.js" />
+    <None Remove="publish\wwwroot\features-forms-forms-showcase-module.js.map" />
+    <None Remove="publish\wwwroot\features-graphs-graphs-showcase-module.js" />
+    <None Remove="publish\wwwroot\features-graphs-graphs-showcase-module.js.map" />
+    <None Remove="publish\wwwroot\features-maps-maps-module.js" />
+    <None Remove="publish\wwwroot\features-maps-maps-module.js.map" />
+    <None Remove="publish\wwwroot\features-miscellaneous-miscellaneous-module.js" />
+    <None Remove="publish\wwwroot\features-miscellaneous-miscellaneous-module.js.map" />
+    <None Remove="publish\wwwroot\features-outlook-outlook-module.js" />
+    <None Remove="publish\wwwroot\features-outlook-outlook-module.js.map" />
+    <None Remove="publish\wwwroot\features-smartadmin-intel-smartadmin-intel-module.js" />
+    <None Remove="publish\wwwroot\features-smartadmin-intel-smartadmin-intel-module.js.map" />
+    <None Remove="publish\wwwroot\features-tables-tables-module.js" />
+    <None Remove="publish\wwwroot\features-tables-tables-module.js.map" />
+    <None Remove="publish\wwwroot\features-ui-elements-ui-elements-module.js" />
+    <None Remove="publish\wwwroot\features-ui-elements-ui-elements-module.js.map" />
+    <None Remove="publish\wwwroot\features-widgets-widgets-showcase-module.js" />
+    <None Remove="publish\wwwroot\features-widgets-widgets-showcase-module.js.map" />
+    <None Remove="publish\wwwroot\flot-charts-flot-charts-module.js" />
+    <None Remove="publish\wwwroot\flot-charts-flot-charts-module.js.map" />
+    <None Remove="publish\wwwroot\forgot-forgot-module.js" />
+    <None Remove="publish\wwwroot\forgot-forgot-module.js.map" />
+    <None Remove="publish\wwwroot\form-elements-form-elements-module.js" />
+    <None Remove="publish\wwwroot\form-elements-form-elements-module.js.map" />
+    <None Remove="publish\wwwroot\form-layouts-form-layouts-module.js" />
+    <None Remove="publish\wwwroot\form-layouts-form-layouts-module.js.map" />
+    <None Remove="publish\wwwroot\form-layouts-form-layouts-module~form-plugins-form-plugins-module.js" />
+    <None Remove="publish\wwwroot\form-layouts-form-layouts-module~form-plugins-form-plugins-module.js.map" />
+    <None Remove="publish\wwwroot\form-plugins-form-plugins-module.js" />
+    <None Remove="publish\wwwroot\form-plugins-form-plugins-module.js.map" />
+    <None Remove="publish\wwwroot\form-validation-form-validation-module.js" />
+    <None Remove="publish\wwwroot\form-validation-form-validation-module.js.map" />
+    <None Remove="publish\wwwroot\forum-forum-module.js" />
+    <None Remove="publish\wwwroot\forum-forum-module.js.map" />
+    <None Remove="publish\wwwroot\gallery-gallery-demo-module.js" />
+    <None Remove="publish\wwwroot\gallery-gallery-demo-module.js.map" />
+    <None Remove="publish\wwwroot\general-elements-general-elements-module.js" />
+    <None Remove="publish\wwwroot\general-elements-general-elements-module.js.map" />
+    <None Remove="publish\wwwroot\general-view-general-view-module.js" />
+    <None Remove="publish\wwwroot\general-view-general-view-module.js.map" />
+    <None Remove="publish\wwwroot\grid-grid-module.js" />
+    <None Remove="publish\wwwroot\grid-grid-module.js.map" />
+    <None Remove="publish\wwwroot\highchart-tables-highchart-tables-module.js" />
+    <None Remove="publish\wwwroot\highchart-tables-highchart-tables-module.js.map" />
+    <None Remove="publish\wwwroot\icons-icons-module.js" />
+    <None Remove="publish\wwwroot\icons-icons-module.js.map" />
+    <None Remove="publish\wwwroot\index.html" />
+    <None Remove="publish\wwwroot\invoice-invoice-module.js" />
+    <None Remove="publish\wwwroot\invoice-invoice-module.js.map" />
+    <None Remove="publish\wwwroot\locked-locked-module.js" />
+    <None Remove="publish\wwwroot\locked-locked-module.js.map" />
+    <None Remove="publish\wwwroot\login-login-module.js" />
+    <None Remove="publish\wwwroot\login-login-module.js.map" />
+    <None Remove="publish\wwwroot\main.js" />
+    <None Remove="publish\wwwroot\main.js.map" />
+    <None Remove="publish\wwwroot\morris-charts-morris-charts-module.js" />
+    <None Remove="publish\wwwroot\morris-charts-morris-charts-module.js.map" />
+    <None Remove="publish\wwwroot\nestable-lists-nestable-lists-module.js" />
+    <None Remove="publish\wwwroot\nestable-lists-nestable-lists-module.js.map" />
+    <None Remove="publish\wwwroot\ngx-datatable-ngx-datatable-case-module.js" />
+    <None Remove="publish\wwwroot\ngx-datatable-ngx-datatable-case-module.js.map" />
+    <None Remove="publish\wwwroot\normal-tables-normal-tables-module.js" />
+    <None Remove="publish\wwwroot\normal-tables-normal-tables-module.js.map" />
+    <None Remove="publish\wwwroot\polyfills.js" />
+    <None Remove="publish\wwwroot\polyfills.js.map" />
+    <None Remove="publish\wwwroot\post-view-post-view-module.js" />
+    <None Remove="publish\wwwroot\post-view-post-view-module.js.map" />
+    <None Remove="publish\wwwroot\pricing-tables-pricing-tables-module.js" />
+    <None Remove="publish\wwwroot\pricing-tables-pricing-tables-module.js.map" />
+    <None Remove="publish\wwwroot\privacyPolicy-privacyPolicy-module.js" />
+    <None Remove="publish\wwwroot\privacyPolicy-privacyPolicy-module.js.map" />
+    <None Remove="publish\wwwroot\profile-profile-module.js" />
+    <None Remove="publish\wwwroot\profile-profile-module.js.map" />
+    <None Remove="publish\wwwroot\projects-projects-list-module.js" />
+    <None Remove="publish\wwwroot\projects-projects-list-module.js.map" />
+    <None Remove="publish\wwwroot\register-register-module.js" />
+    <None Remove="publish\wwwroot\register-register-module.js.map" />
+    <None Remove="publish\wwwroot\runtime.js" />
+    <None Remove="publish\wwwroot\runtime.js.map" />
+    <None Remove="publish\wwwroot\search-search-module.js" />
+    <None Remove="publish\wwwroot\search-search-module.js.map" />
+    <None Remove="publish\wwwroot\social-social-module.js" />
+    <None Remove="publish\wwwroot\social-social-module.js.map" />
+    <None Remove="publish\wwwroot\styles.js" />
+    <None Remove="publish\wwwroot\styles.js.map" />
+    <None Remove="publish\wwwroot\textTranslation-textTranslation-module.js" />
+    <None Remove="publish\wwwroot\textTranslation-textTranslation-module.js.map" />
+    <None Remove="publish\wwwroot\timeline-timeline-module.js" />
+    <None Remove="publish\wwwroot\timeline-timeline-module.js.map" />
+    <None Remove="publish\wwwroot\topic-view-topic-view-module.js" />
+    <None Remove="publish\wwwroot\topic-view-topic-view-module.js.map" />
+    <None Remove="publish\wwwroot\tree-views-tree-views-module.js" />
+    <None Remove="publish\wwwroot\tree-views-tree-views-module.js.map" />
+    <None Remove="publish\wwwroot\typography-typography-module.js" />
+    <None Remove="publish\wwwroot\typography-typography-module.js.map" />
+    <None Remove="publish\wwwroot\useTerms-useTerms-module.js" />
+    <None Remove="publish\wwwroot\useTerms-useTerms-module.js.map" />
+    <None Remove="publish\wwwroot\vendor.js" />
+    <None Remove="publish\wwwroot\vendor.js.map" />
+    <None Remove="publish\wwwroot\videogular.eot" />
+    <None Remove="publish\wwwroot\videogular.svg" />
+    <None Remove="publish\wwwroot\wizards-wizards-module.js" />
+    <None Remove="publish\wwwroot\wizards-wizards-module.js.map" />
+  </ItemGroup>
+</Project>

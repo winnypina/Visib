@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage BackgroundColor="{StaticResource AppBackgroundColor}" xmlns:controls="clr-namespace:Visib.Mobile.Controls" xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.Views.WelcomeView">
+    <ContentPage.Content>
+        <Grid>
+            <controls:Video Source="https://s3.us-east-2.amazonaws.com/visib/backgroundvideo.mp4" Loop="true" HorizontalOptions="Fill" VerticalOptions="Fill" />
+            <ScrollView>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Margin="0,80,0,0">
+                        <Image VerticalOptions="Center" HorizontalOptions="Center" Source="logo.png" WidthRequest="40">
+                        </Image>
+                        <Label Margin="0,10,0,0" VerticalOptions="Center" HorizontalOptions="Center" Text="Mostre seu talento para o mundo" FontSize="20" FontAttributes="None" TextColor="#FFFFFFFF" />
+                    </StackLayout>
+                    <Label Grid.Row="2" Text="Entre com suas redes sociais" VerticalOptions="End" HorizontalOptions="Center" />
+                    <StackLayout Margin="0,20,0,0" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Orientation="Horizontal">
+                        <Image Source="FACEBOOK.png" WidthRequest="50" HeightRequest="50">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LoginWithFacebookCommand}">
+                                </TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <StackLayout Margin="0,20,0,0" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="4" Orientation="Horizontal">
+                        <Grid WidthRequest="130" VerticalOptions="Center" HeightRequest="2" BackgroundColor="White">
+                        </Grid>
+                        <Label Text="Ou">
+                        </Label>
+                        <Grid WidthRequest="130" VerticalOptions="Center" HeightRequest="2" BackgroundColor="White">
+                        </Grid>
+                    </StackLayout>
+                    <Image Margin="0,20,0,0" Grid.Row="5" WidthRequest="327" HeightRequest="48" VerticalOptions="Center" HorizontalOptions="Center" Source="btncrie.png" Aspect="AspectFit">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignupCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Margin="0,20,0,0" Grid.Row="6" WidthRequest="327" HeightRequest="48" VerticalOptions="Center" HorizontalOptions="Center" Source="ENTRAR.png" Aspect="AspectFit">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SigninCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Row="7" Margin="0,20,0,0" FontSize="14" VerticalOptions="Center" HorizontalOptions="Center" Text="ESQUECI MINHA SENHA">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}">
+                            </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </ScrollView>
+            <Grid IsVisible="{Binding IsLoading}">
+                <Grid BackgroundColor="{StaticResource AppBackgroundColor}" Opacity="0.8">
+                </Grid>
+                <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="White" VerticalOptions="Center">
+                </ActivityIndicator>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

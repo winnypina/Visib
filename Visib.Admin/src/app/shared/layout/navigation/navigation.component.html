@@ -1,0 +1,56 @@
+<aside id="left-panel">
+
+  <nav>
+    <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+    Please note that these links work a bit different than
+    traditional href="" links. See documentation for details.
+    -->
+
+    <ul saSmartMenu>
+      <li>
+        <a title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span
+          class="menu-item-parent">{{'Dashboard' | i18n}}</span></a>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/dashboard/analytics"><i class="fa fa-user"></i>Usuários</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="top-menu-invisible">
+        <a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">Cadastros</span></a>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/cadastros/categorias"><i class="fa fa-list"></i>
+              Categorias de vídeo</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/cadastros/useTerms"><i class="fa fa-file-text"></i>
+              Termos de uso</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/cadastros/privacyPolicy"><i class="fa fa-user-secret"></i>
+              Política de Privacidade</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/cadastros/backgroundVideo"><i class="fa fa-video-camera"></i>
+              Vídeo de abertura</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/cadastros/textTranslation"><i class="fa fa-globe"></i>
+              Textos multi-idioma</a>
+          </li>
+          <li routerLinkActive="active">
+              <a routerLink="/cadastros/adminUser"><i class="fa  fa-user"></i>
+                Usuários Admin</a>
+            </li>
+        </ul>
+      </li>
+
+    </ul>
+
+  </nav>
+
+  <sa-minify-menu></sa-minify-menu>
+
+</aside>

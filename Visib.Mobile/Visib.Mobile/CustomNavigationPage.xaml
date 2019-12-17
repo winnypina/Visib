@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NavigationPage xmlns="http://xamarin.com/schemas/2014/forms" BarTextColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.CustomNavigationPage">
+   <NavigationPage.BarBackgroundColor>
+        <OnPlatform x:TypeArguments="Color">
+            <On Platform="Android, iOS" Value="{StaticResource AppBackgroundColor}" />
+        </OnPlatform>
+    </NavigationPage.BarBackgroundColor>
+</NavigationPage>

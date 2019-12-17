@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceAssemblyReference>true</ProduceAssemblyReference>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="MvvmCross.Forms" Version="6.2.3" />
+    <PackageReference Include="Xamarin.Auth" Version="1.6.0.4" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
+    <PackageReference Include="Refit" Version="4.6.107" />
+    <PackageReference Include="fusillade" Version="2.0.5" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Polly" Version="7.1.0" />
+    <PackageReference Include="MonkeyCache.SQLite" Version="1.2.0-beta" />
+    <PackageReference Include="Xamarin.Forms.Contacts" Version="1.0.5" />
+    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="6.3.0" />
+    <PackageReference Include="LiveXAML" Version="2.1.72" />
+    <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.18" />
+    <PackageReference Include="Microsoft.AppCenter" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="ViewModels\Models\" />
+    <Folder Include="Services\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Services\Requests\" />
+    <Folder Include="Popups\" />
+    <Folder Include="Services\Responses\" />
+    <Folder Include="Messages\" />
+    <Folder Include="Musics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Musics\EletroEnergy.mp3" />
+    <None Remove="Musics\Epic.mp3" />
+    <None Remove="Musics\HappyRock.mp3" />
+    <None Remove="Musics\Indiebox.mp3" />
+    <None Remove="Musics\Jazz.mp3" />
+    <None Remove="Musics\LetItGo.mp3" />
+    <None Remove="Musics\Lounge.mp3" />
+    <None Remove="Musics\Mood.mp3" />
+    <None Remove="Musics\Ocean.mp3" />
+    <None Remove="Musics\Rock.mp3" />
+    <None Remove="Musics\Time.mp3" />
+    <None Remove="Musics\Vital.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Musics\Jazz.mp3" />
+    <EmbeddedResource Include="Musics\Lounge.mp3" />
+    <EmbeddedResource Include="Musics\Rock.mp3" />
+    <EmbeddedResource Include="Musics\Time.mp3" />
+  </ItemGroup>
+</Project>

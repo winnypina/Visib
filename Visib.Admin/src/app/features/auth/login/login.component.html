@@ -1,0 +1,44 @@
+<header id="header" class="animated fadeInDown">
+
+  <div id="logo-group">
+    <span id="logo"> <img src="assets/img/logo.png" alt="Estaciona app" style="width: 50px;"> </span>
+  </div>
+
+  
+
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+
+  <div id="content" class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+        <div class="well no-padding">
+          <form class="smart-form client-form">
+            <header>
+              Entrar
+            </header>
+            <fieldset>
+              <section>
+                <label class="label">E-mail</label>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                  <input type="email"  [(ngModel)]="user.email" name="email" data-smart-validate-input="" data-required="" data-email="" data-message-required="Por favor digite um e-mail" data-message-email="Por favor digite um e-mail válido">
+                  <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>
+                    Por favor digite um e-mail</b></label>
+              </section>
+              <section>
+                <label class="label">Senha</label>
+                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                  <input type="password"  [(ngModel)]="user.password" name="password" data-smart-validate-input="" data-required="" data-minlength="3" data-maxnlength="20" data-message="Por favor digite uma senha">
+                  <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Digite sua senha</b> </label>
+              </section>
+            </fieldset>
+            <footer>
+              <button (click)="login($event)" class="btn btn-primary">
+                Entrar
+              </button>
+            </footer>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>

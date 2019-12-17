@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pages:PopupPage xmlns:controls="clr-namespace:Visib.Mobile.Controls;assembly=Visib.Mobile" xmlns:behaviors="clr-namespace:Visib.Mobile.Behaviors;assembly=Visib.Mobile" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" x:Class="Visib.Mobile.Popups.PopupWithOptions">
+    <Grid Padding="36" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" HeightRequest="300" WidthRequest="300">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100">
+                </RowDefinition>
+                <RowDefinition Height="80">
+                </RowDefinition>
+                <RowDefinition Height="100">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Label x:Name="MessageLabel" TextColor="#1d193a" HorizontalTextAlignment="Center" Text="Digite o código recebido por SMS" HorizontalOptions="Center" VerticalOptions="Center" />
+            <StackLayout Grid.Row="1">
+                <controls:CustomEntry x:Name="InputEntry" TextColor="#1d193a" HorizontalTextAlignment="Center" Keyboard="Numeric">
+                    <controls:CustomEntry.Behaviors>
+                        <behaviors:MaskedBehavior Mask="XXXX">
+                        </behaviors:MaskedBehavior>
+                    </controls:CustomEntry.Behaviors>
+                </controls:CustomEntry>
+                <Grid BackgroundColor="#1d193a" HeightRequest="2"></Grid>
+            </StackLayout>
+            <Grid Grid.Row="2" Margin="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="50*">
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Frame WidthRequest="280" x:Name="CancelFrame" HeightRequest="218" VerticalOptions="Center" HorizontalOptions="Center" BorderColor="#1d193a" HasShadow="false" BackgroundColor="White" CornerRadius="20">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CancelTapGestureRecognizer_OnTapped">
+                        </TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    <Label x:Name="CancelLabel" Text="CANCELAR" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="10" FontAttributes="Bold" TextColor="#6f7796" />
+                </Frame>
+                <Frame Grid.Column="1" WidthRequest="280" x:Name="OkFrame" VerticalOptions="Center" HorizontalOptions="Center" BorderColor="#1d193a" HeightRequest="218" HasShadow="false" BackgroundColor="White" CornerRadius="20">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OkTapGestureRecognizer_OnTapped">
+                        </TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    <Label x:Name="ConfirmLabel" Text="CONFIRMAR" VerticalOptions="Center" HorizontalOptions="Center" FontSize="10" FontAttributes="Bold" TextColor="#6f7796" />
+                </Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</pages:PopupPage>

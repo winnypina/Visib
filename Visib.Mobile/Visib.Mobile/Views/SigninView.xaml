@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<views:MvxContentPage x:TypeArguments="viewModels:SigninViewModel" xmlns:behaviors="clr-namespace:Visib.Mobile.Behaviors;assembly=Visib.Mobile" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" xmlns:viewModels="clr-namespace:Visib.Mobile.ViewModels;assembly=Visib.Mobile" xmlns:controls="clr-namespace:Visib.Mobile.Controls;assembly=Visib.Mobile" Title="Entrar" BackgroundColor="{StaticResource AppBackgroundColor}" x:Class="Visib.Mobile.Views.SigninView">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <Grid>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid Margin="0,100,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition>
+                                </ColumnDefinition>
+                                <ColumnDefinition>
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" IsVisible="{Binding IsPhone}">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeModeCommand}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="TELEFONE" FontSize="20" FontAttributes="None" TextColor="#FFFCE200" HorizontalOptions="Center" />
+                                <Grid HorizontalOptions="Center" BackgroundColor="#fce200" WidthRequest="80" HeightRequest="2">
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Column="0" IsVisible="{Binding IsEmail}">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeModeCommand}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="TELEFONE" FontSize="20" FontAttributes="None" TextColor="White" HorizontalOptions="Center" />
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" IsVisible="{Binding IsEmail}">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeModeCommand}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="EMAIL" FontSize="20" FontAttributes="None" TextColor="#FFFCE200" HorizontalOptions="Center" />
+                                <Grid HorizontalOptions="Center" BackgroundColor="#fce200" WidthRequest="80" HeightRequest="2">
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" IsVisible="{Binding IsPhone}">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeModeCommand}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="EMAIL" FontSize="20" FontAttributes="None" TextColor="White" HorizontalOptions="Center" />
+                            </StackLayout>
+                        </Grid>
+                        <Grid Grid.Row="1" IsVisible="{Binding IsPhone}">
+                            <StackLayout>
+                                <Grid Margin="0,20,0,0">
+                                    <Frame CornerRadius="20" Padding="0" WidthRequest="300" BorderColor="White" HeightRequest="46" HorizontalOptions="Center" BackgroundColor="Transparent">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20">
+                                                </ColumnDefinition>
+                                                <ColumnDefinition Width="*">
+                                                </ColumnDefinition>
+                                                <ColumnDefinition Width="20">
+                                                </ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <controls:CustomEntry Grid.Column="1" TextColor="White" Keyboard="Numeric" Text="{Binding Username, Mode=TwoWay}" HorizontalTextAlignment="Center" Placeholder="{Binding LoginLabel}" PlaceholderColor="White">
+                                                <controls:CustomEntry.Behaviors>
+                                                <behaviors:MaskedBehavior Mask="(XX)XXXXX-XXXX">
+                                                </behaviors:MaskedBehavior>
+                                            </controls:CustomEntry.Behaviors>
+                                            </controls:CustomEntry>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                                <Grid Margin="0,20,0,0">
+                                    <Frame CornerRadius="20" Padding="0" WidthRequest="300" BorderColor="White" HeightRequest="46" HorizontalOptions="Center" BackgroundColor="Transparent">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60">
+                                                </ColumnDefinition>
+                                                <ColumnDefinition Width="*">
+                                                </ColumnDefinition>
+                                                <ColumnDefinition Width="60">
+                                                </ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <controls:CustomEntry TextColor="White" Grid.Column="1" Text="{Binding Password, Mode=TwoWay}" HorizontalTextAlignment="Center" Placeholder="Senha" IsPassword="True" PlaceholderColor="White">
+                                            </controls:CustomEntry>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        <Grid Grid.Row="1" IsVisible="{Binding IsEmail}">
+                            <StackLayout>
+                                <Grid Margin="0,20,0,0">
+                                    <Frame CornerRadius="20" Padding="0" WidthRequest="300" BorderColor="White" HeightRequest="46" HorizontalOptions="Center" BackgroundColor="Transparent">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20">
+                                                </ColumnDefinition>
+                                                <ColumnDefinition Width="*">
+                                                </ColumnDefinition>
+                                                <ColumnDefinition Width="20">
+                                                </ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <controls:CustomEntry Grid.Column="1" TextColor="White" Text="{Binding Username, Mode=TwoWay}" HorizontalTextAlignment="Center" Placeholder="{Binding LoginLabel}" PlaceholderColor="White">
+                                            </controls:CustomEntry>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                                <Grid Margin="0,20,0,0">
+                                    <Frame CornerRadius="20" Padding="0" WidthRequest="300" BorderColor="White" HeightRequest="46" HorizontalOptions="Center" BackgroundColor="Transparent">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60">
+                                                </ColumnDefinition>
+                                                <ColumnDefinition Width="*">
+                                                </ColumnDefinition>
+                                                <ColumnDefinition Width="60">
+                                                </ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <controls:CustomEntry TextColor="White" Grid.Column="1" Text="{Binding Password, Mode=TwoWay}" HorizontalTextAlignment="Center" Placeholder="Senha" IsPassword="True" PlaceholderColor="White">
+                                            </controls:CustomEntry>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        <Grid Margin="0,20,0,0" Grid.Row="2">
+                            <Frame HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="18" BackgroundColor="#FF008cff" CornerRadius="20">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SendCommand}">
+                                    </TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <Label Text="ENTRAR" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" FontAttributes="None" TextColor="#FFFFFFFF" />
+                            </Frame>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <Grid IsVisible="{Binding IsLoading}">
+                <Grid BackgroundColor="{StaticResource AppBackgroundColor}" Opacity="0.8">
+                </Grid>
+                <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="White" VerticalOptions="Center">
+                </ActivityIndicator>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

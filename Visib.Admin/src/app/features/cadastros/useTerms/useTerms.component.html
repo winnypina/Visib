@@ -1,0 +1,78 @@
+<div id="content">
+    <div class="row">
+
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div sa-widget [colorbutton]="false" [editbutton]="false" [custombutton]="false">
+                <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" [editbutton]="false">
+          
+                    [colorbutton]="false"
+                    [editbutton]="false"
+                    [togglebutton]="false"
+                    [deletebutton]="false"
+                    [fullscreenbutton]="false"
+                    [custombutton]="false"
+                    [collapsed]="true"
+                    [sortable]="false"
+          
+                    -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+
+                    <h2>Termos de uso</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <form name="newForm" class="smart-form">
+
+                            <fieldset>
+                                <section>
+                                    <label class="select">
+                                        <select name="language" (change)="onChange($event.target.value)">
+                                            <option value="pt-BR">Português (pt-BR)</option>
+                                            <option value="en-US">Inglês (en-US)</option>
+                                            <option value="es-ES">Espanhol (es-ES)</option>
+                                        </select> <i></i> </label>
+
+                                </section>
+
+                            </fieldset>
+
+                            <fieldset>
+                                <section>
+                                    <label class="textarea">
+                                        <textarea [(ngModel)]="currentText" name="valueText" rows="50" class="custom-scroll"></textarea>
+                                    </label>
+
+                                </section>
+
+                            </fieldset>
+
+                            <footer>
+                                <button type="button" (click)="save()" class="btn btn-primary">
+                                    Enviar
+                                </button>
+                            </footer>
+                        </form>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+        </article>
+    </div>
+</div>

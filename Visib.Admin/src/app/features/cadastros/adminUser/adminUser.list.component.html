@@ -1,0 +1,38 @@
+<div id="content">
+    <div class="form-header-right">
+        <a routerLink="/cadastros/adminUser/data" class="btn btn-success">
+            <i class="fa fa-lg fa-fw fa-plus"></i>
+            Novo
+        </a>
+    </div>
+    <div sa-widget [editbutton]="false" color="blueDark">
+        <header><span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <h2>Usuários Admin</h2>
+        </header>
+    </div>
+
+    <ngx-datatable #table class="table-striped" [rows]="rows" [loadingIndicator]="loadingIndicator"
+        [columnMode]="'force'" [headerHeight]="40" [footerHeight]="45" [rowHeight]="'auto'" [limit]="controls.pageSize"
+        [cssClasses]="{
+                            sortAscending: 'fa fa-caret-up',
+                            sortDescending: 'fa fa-caret-down',
+                            pagerLeftArrow: 'fa  fa-angle-left',
+                            pagerRightArrow: 'fa fa-angle-right',
+                            pagerPrevious: 'fa fa-angle-double-left',
+                            pagerNext: 'fa fa-angle-double-right'
+                          }" [reorderable]="reorderable">
+        <ngx-datatable-column name="Email" prop="email">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Actions" sortable="false" prop="id">
+            <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                Ações
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <button md-icon-button (click)="delete(value)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+
+</div>

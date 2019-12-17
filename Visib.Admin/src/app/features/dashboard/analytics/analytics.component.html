@@ -1,0 +1,27 @@
+<!-- MAIN CONTENT -->
+<div id="content"  >
+
+  <div class="row">
+    <sa-big-breadcrumbs icon="bar-chart-o" [items]="['Dashboard', 'Usuários']" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>    
+  </div>
+  <!-- widget grid -->
+  <sa-widgets-grid>
+
+    <div class="row"  *ngIf="chartjsData">
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <div sa-widget [editbutton]="false">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+            <h2>Usuários ativos</h2>
+          </header>
+          <div>
+            <div class="widget-body">
+              <sa-chart-js type="bar" [data]="chartjsData"></sa-chart-js>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxTabbedPage x:TypeArguments="viewModels:TabsMasterViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:Visib.Mobile.ViewModels;assembly=Visib.Mobile"
+             xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             androidSpecific:TabbedPage.ToolbarPlacement="Bottom"
+             androidSpecific:TabbedPage.IsSwipePagingEnabled="False"
+             BackgroundColor="#1d193a"
+             x:Class="Visib.Mobile.Views.TabsMasterView">
+</views:MvxTabbedPage>

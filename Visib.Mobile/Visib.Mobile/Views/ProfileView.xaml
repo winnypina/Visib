@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:Visib.Mobile.Controls" BackgroundColor="{StaticResource AppBackgroundColor}" xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.Views.ProfileView">
+    <Grid x:Name="MainGrid">
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50">
+                </RowDefinition>
+                <RowDefinition Height="Auto">
+                </RowDefinition>
+                <RowDefinition Height="120">
+                </RowDefinition>
+                <RowDefinition Height="Auto">
+                </RowDefinition>
+                <RowDefinition Height="120">
+                </RowDefinition>
+                <RowDefinition Height="*">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Meu Perfil" />
+            <Image Grid.Row="0" HorizontalOptions="End" WidthRequest="25" Source="gear.png" Margin="0,0,20,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowMenuCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Grid Grid.Row="2" Padding="20 ">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="*">
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ffimageloading:CachedImage ErrorPlaceholder="defaultuser.png" LoadingPlaceholder="defaultuser.png" DownsampleToViewSize="true" VerticalOptions="Start" Source="{Binding ProfileImage}">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation />
+                    </ffimageloading:CachedImage.Transformations>
+                </ffimageloading:CachedImage>
+                <StackLayout Grid.Column="1">
+                    <Label Text="{Binding Name}" FontSize="20" />
+                    <Label Text="{Binding Country}" FontSize="15" />
+                    <Label Text="{Binding Email}" FontSize="15" />
+                </StackLayout>
+            </Grid>
+            <Label Margin="10" Text="{Binding About}" Grid.Row="3" FontSize="14" />
+            <Grid Grid.Row="4" Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="33*">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="33*">
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackLayout>
+                    <Label Text="{Binding PostCount}" FontSize="20" HorizontalOptions="Center" />
+                    <Label Text="Meus Videos" FontSize="15" HorizontalOptions="Center" />
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                     <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowFollowsCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="{Binding Follows}" FontSize="20" HorizontalOptions="Center" />
+                    <Label Text="Seguindo" FontSize="15" HorizontalOptions="Center" />
+                </StackLayout>
+                <StackLayout Grid.Column="2">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowFollowersCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="{Binding Followers}" FontSize="20" HorizontalOptions="Center" />
+                    <Label Text="Seguidores" FontSize="15" HorizontalOptions="Center" />
+                </StackLayout>
+            </Grid>
+            <flv:FlowListView BackgroundColor="Transparent" FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="true" Grid.Row="5" FlowItemsSource="{Binding Posts}">
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5" HorizontalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <ffimageloading:CachedImage HeightRequest="250" WidthRequest="150" Aspect="AspectFill" DownsampleToViewSize="true" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Source="{Binding VideoCover}">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.ShowVideoCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+                            <Grid HorizontalOptions="Start" VerticalOptions="End" Margin="20">
+                                <StackLayout IsVisible="{Binding HasUserApplause, Converter={StaticResource BooleanInverterConverter}}">
+                                    <Image HorizontalOptions="Center" Source="clap.png" />
+                                    <Label HorizontalOptions="Center" FontSize="13" Text="{Binding ApplauseCount}">
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout IsVisible="{Binding HasUserApplause}">
+                                    <Image HorizontalOptions="Center" Source="userClap.png" />
+                                    <Label HorizontalOptions="Center" FontSize="13" Text="{Binding ApplauseCount}">
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+        </Grid>
+        <Grid IsVisible="{Binding IsLoading}">
+            <Grid BackgroundColor="{StaticResource AppBackgroundColor}" Opacity="0.8">
+            </Grid>
+            <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="White" VerticalOptions="Center">
+            </ActivityIndicator>
+        </Grid>
+    </Grid>
+</views:MvxContentPage>

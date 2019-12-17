@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+    <remove-node path="/api/package[@name='com.github.hiteshsondhi88.libffmpeg']/class[@name='FFmpeg']/implements[@name='com.github.hiteshsondhi88.libffmpeg.FFmpegInterface']" />
+    
+    <remove-node path="/api/package[@name='com.github.hiteshsondhi88.libffmpeg']/interface[@name='FFmpegLoadBinaryResponseHandler']/implements[@name='com.github.hiteshsondhi88.libffmpeg.ResponseHandler']" />
+    
+    <remove-node path="/api/package[@name='com.github.hiteshsondhi88.libffmpeg']/interface[@name='FFmpegExecuteResponseHandler']/implements[@name='com.github.hiteshsondhi88.libffmpeg.ResponseHandler']" />
+</metadata>

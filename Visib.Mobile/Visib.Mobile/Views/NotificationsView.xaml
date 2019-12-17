@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns:forms1="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" BackgroundColor="{StaticResource AppBackgroundColor}" xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.Views.NotificationsView">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid HeightRequest="55">
+                <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Notificações" />
+            </Grid>
+            <ListView BackgroundColor="Transparent" SeparatorColor="Transparent" SelectionMode="None" Grid.Row="1" ItemsSource="{Binding Notifications}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" CachingStrategy="RecycleElement" IsRefreshing="{Binding IsLoading}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80">
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="*">
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="30">
+                                    </ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <forms1:CachedImage Margin="5" Source="{Binding UserPicture1}" WidthRequest="40" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="StartAndExpand" ErrorPlaceholder="defaultuser.png" LoadingPlaceholder="defaultuser.png">
+                                    <forms1:CachedImage.Transformations>
+                                        <transformations:CircleTransformation />
+                                    </forms1:CachedImage.Transformations>
+                                </forms1:CachedImage>
+                                 <forms1:CachedImage Margin="15,15,0,0" Source="{Binding UserPicture2}" IsVisible="{Binding User2Id, Converter={StaticResource NullToBooleanConverter}}" WidthRequest="40" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="StartAndExpand" ErrorPlaceholder="defaultuser.png" LoadingPlaceholder="defaultuser.png">
+                                    <forms1:CachedImage.Transformations>
+                                        <transformations:CircleTransformation />
+                                    </forms1:CachedImage.Transformations>
+                                </forms1:CachedImage>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label FontSize="13" Text="{Binding Text}" />
+                                </StackLayout>
+                                <Label VerticalOptions="Center" Grid.Column="2" Text="{Binding Since}" TextColor="White" />
+                                <Grid Grid.Row="1" Margin="0,10,0,0" Grid.Column="0" HeightRequest="1" BackgroundColor="White" Grid.ColumnSpan="3" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid IsVisible="{Binding IsLoading}">
+            <Grid BackgroundColor="{StaticResource AppBackgroundColor}" Opacity="0.8" />
+            <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="White" VerticalOptions="Center" />
+        </Grid>
+    </Grid>
+</views:MvxContentPage>

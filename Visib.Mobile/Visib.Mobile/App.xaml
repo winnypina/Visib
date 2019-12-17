@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:converters="clr-namespace:Visib.Mobile.Converters;assembly=Visib.Mobile" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.App">
+    <Application.Resources>
+        <Color x:Key="AppBackgroundColor">#1d193a</Color>
+
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="FrutigerLTStdRoman.otf#Frutiger LT Std 55 Roman" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+        
+        <converters:BooleanInverterConverter x:Key="BooleanInverterConverter"></converters:BooleanInverterConverter>
+        <converters:NullToBooleanConverter x:Key="NullToBooleanConverter"></converters:NullToBooleanConverter>
+        
+    </Application.Resources>
+</Application>

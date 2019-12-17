@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:Visib.Mobile.Controls" BackgroundColor="{StaticResource AppBackgroundColor}" xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.Views.HomeView">
+    <Grid x:Name="MainGrid">
+        <CollectionView x:Name="PostsListView" ItemSizingStrategy="MeasureFirstItem" SelectionMode="None" ItemsSource="{Binding Posts}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <ListItemsLayout SnapPointsType="MandatorySingle" SnapPointsAlignment="Start">
+                    <x:Arguments>
+                        <ItemsLayoutOrientation>Vertical</ItemsLayoutOrientation>
+                    </x:Arguments>
+                </ListItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HeightRequest="{Binding BindingContext.ScreenHeight, Source={x:Reference MainGrid}}">
+                        <controls:Video AutoPlay="true" VideoId="{Binding Id}" Source="{Binding VideoSource}" SourceType="Http" Loop="true" HorizontalOptions="Fill" VerticalOptions="Fill" />
+                        <Grid Padding="20,0,20,150">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*">
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="50*">
+                                    </ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid VerticalOptions="End">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto">
+                                        </RowDefinition>
+                                        <RowDefinition Height="Auto">
+                                        </RowDefinition>
+                                        <RowDefinition Height="Auto">
+                                        </RowDefinition>
+                                        <RowDefinition Height="Auto">
+                                        </RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <ffimageloading:CachedImage ErrorPlaceholder="defaultuser.png" LoadingPlaceholder="defaultuser.png" DownsampleToViewSize="true" VerticalOptions="Start" Grid.RowSpan="3" WidthRequest="70" Source="{Binding UserPicture}">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.GoToUserProfileCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding UserId}">
+                                            </TapGestureRecognizer>
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <fftransformations:CircleTransformation />
+                                        </ffimageloading:CachedImage.Transformations>
+                                    </ffimageloading:CachedImage>
+                                    <Label Text="{Binding Username}" FontSize="15" Grid.Column="1" Grid.Row="0" />
+                                    <Label Text="{Binding Title}" FontSize="15" Grid.Column="1" Grid.Row="1" />
+                                    <Label Text="{Binding Description}" VerticalOptions="Start" FontSize="12" Grid.Column="1" Grid.Row="2" />
+                                    <Label Text="{Binding TagString}" FontSize="15" Grid.Column="1" Grid.Row="3" />
+                                </Grid>
+                                <StackLayout Grid.Column="1" VerticalOptions="End" HorizontalOptions="End">
+                                    <StackLayout>
+                                        <Image HorizontalOptions="Center" Source="views.png" />
+                                        <Label HorizontalOptions="Center" FontSize="13" Text="{Binding ViewCount}">
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding HasUserApplause, Converter={StaticResource BooleanInverterConverter}}">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.ApplauseCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                        <Image HorizontalOptions="Center" Source="clap.png" />
+                                        <Label HorizontalOptions="Center" FontSize="13" Text="{Binding ApplauseCount}">
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding HasUserApplause}">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.ApplauseCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                        <Image HorizontalOptions="Center" Source="userClap.png" />
+                                        <Label HorizontalOptions="Center" FontSize="13" Text="{Binding ApplauseCount}">
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.CommentsCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                        <Image HorizontalOptions="Center" Source="chat.png" />
+                                        <Label HorizontalOptions="Center" FontSize="13" Text="{Binding CommentCount}">
+                                        </Label>
+                                    </StackLayout>
+                                    <Image Source="share.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.ShareCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid HeightRequest="60" BackgroundColor="Transparent" InputTransparent="true" CascadeInputTransparent="false">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Margin="0,40,0,0" HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="30*">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="30*">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="10*">
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" HorizontalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ApplyRecentFilter}">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="+RECENTES" FontSize="15" FontAttributes="None" TextColor="White" HorizontalOptions="Center" />
+                    <Grid IsVisible="{Binding IsFilterRecent}" HorizontalOptions="CenterAndExpand" WidthRequest="80" BackgroundColor="White" HeightRequest="2">
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Column="1" HorizontalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ApplyViewedFilter}">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="+VISTOS" FontSize="15" FontAttributes="None" TextColor="White" HorizontalOptions="Center" />
+                    <Grid IsVisible="{Binding IsFilterMostViewed}" HorizontalOptions="CenterAndExpand" WidthRequest="80" BackgroundColor="White" HeightRequest="2">
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Column="2" HorizontalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ApplyApplaudedFilter}">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="+CURTIDOS" FontSize="15" FontAttributes="None" TextColor="White" HorizontalOptions="Center" />
+                    <Grid IsVisible="{Binding IsFilterMostApplauded}" HorizontalOptions="CenterAndExpand" WidthRequest="80" BackgroundColor="White" HeightRequest="2">
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </Grid>
+        <Grid IsVisible="{Binding IsLoading}">
+            <Grid BackgroundColor="{StaticResource AppBackgroundColor}" Opacity="0.8">
+            </Grid>
+            <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="White" VerticalOptions="Center">
+            </ActivityIndicator>
+        </Grid>
+    </Grid>
+</views:MvxContentPage>

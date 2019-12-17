@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns:controls="clr-namespace:Visib.Mobile.Controls" BackgroundColor="{StaticResource AppBackgroundColor}" xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.Views.NewPostView">
+    <Grid x:Name="MainGrid">
+        <Grid.Resources>
+            <Style TargetType="Grid">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style TargetType="StackLayout">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid>
+            <controls:Video SourceType="TempFile" AutoPlay="true" Source="{Binding VideoSource}" Loop="True" HorizontalOptions="Fill" VerticalOptions="Fill" />
+        </Grid>
+        <Grid IsVisible="{Binding IsCovers}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70">
+                </RowDefinition>
+                <RowDefinition Height="*">
+                </RowDefinition>
+                <RowDefinition Height="150" />
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Black" Opacity="0.8" Grid.Row="0" Grid.RowSpan="3" />
+            <Image Source="{Binding SelectedCover}" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+            <StackLayout Margin="0,10,0,0">
+                <Grid HeightRequest="58">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="120">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="arrow.png" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Capa">
+                    </Label>
+                    <Grid Padding="5" Grid.Column="2" Margin="0,10,0,10">
+                        <Frame BackgroundColor="#008cff" Padding="5" CornerRadius="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NextCommand}" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="SEGUINTE" HorizontalOptions="Center" FontSize="10" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Grid>
+                <Grid BackgroundColor="White" HeightRequest="2">
+                </Grid>
+            </StackLayout>
+            <CollectionView Grid.Row="2" ItemSizingStrategy="MeasureAllItems" SelectedItem="{Binding SelectedCover,Mode=TwoWay}" SelectionMode="Single" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}" ItemsSource="{Binding Covers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Image Source="{Binding .}" WidthRequest="78" Aspect="AspectFill" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <Grid IsVisible="{Binding IsMusic}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70">
+                </RowDefinition>
+                <RowDefinition Height="*">
+                </RowDefinition>
+                <RowDefinition Height="90" />
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Black" Opacity="0.8" Grid.Row="0" Grid.RowSpan="3" />
+            <StackLayout Margin="0,10,0,0">
+                <Grid HeightRequest="58">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="160">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="arrow.png" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Música">
+                    </Label>
+                    <Grid Padding="5" Grid.Column="2" Margin="0,10,0,10">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="#008cff" Padding="5" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CleanMusicCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Label Text="LIMPAR" HorizontalOptions="Center" FontSize="10" VerticalOptions="Center" />
+                            </Frame>
+                            <Frame BackgroundColor="#008cff" Padding="5" CornerRadius="5" Margin="10,0,0,0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NextCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Label Text="SEGUINTE" HorizontalOptions="Center" FontSize="10" VerticalOptions="Center" />
+                            </Frame>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+                <Grid BackgroundColor="White" HeightRequest="2">
+                </Grid>
+            </StackLayout>
+            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                <StackLayout Padding="10" WidthRequest="80">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PickMusicCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="+" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" WidthRequest="30" />
+                    <Label FontSize="10" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Biblioteca" />
+                </StackLayout>
+                <CollectionView ItemSizingStrategy="MeasureAllItems" VerticalOptions="End" SelectedItem="{Binding SelectedMusic,Mode=TwoWay}" SelectionMode="Single" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}" ItemsSource="{Binding Musics}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout VerticalOptions="End" Padding="10" WidthRequest="50">
+                                <Image Source="music.png" WidthRequest="30" />
+                                <Label FontSize="10" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="{Binding .}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+        <Grid IsVisible="{Binding IsDetails}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70">
+                </RowDefinition>
+                <RowDefinition Height="*">
+                </RowDefinition>
+                <RowDefinition Height="Auto">
+                </RowDefinition>
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Black" Opacity="0.8" Grid.Row="0" Grid.RowSpan="4" />
+            <StackLayout Margin="0,10,0,0">
+                <Grid HeightRequest="58">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="arrow.png" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Publicar">
+                    </Label>
+                </Grid>
+                <Grid BackgroundColor="White" HeightRequest="2">
+                </Grid>
+            </StackLayout>
+            <Grid Grid.Row="2" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto">
+                    </RowDefinition>
+                    <RowDefinition Height="Auto">
+                    </RowDefinition>
+                    <RowDefinition Height="Auto">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*">
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="50*">
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.ColumnSpan="2" CornerRadius="14" Padding="0" BorderColor="White" HeightRequest="40" Margin="20,2" BackgroundColor="Transparent">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+                        <controls:CustomEntry Text="{Binding Title, Mode=TwoWay}" FontSize="12" HorizontalOptions="FillAndExpand" TextColor="White" Grid.Column="1" Placeholder="Título do seu vídeo" PlaceholderColor="White" />
+                    </Grid>
+                </Frame>
+                <Frame Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="14" Grid.Row="1" Padding="0" BorderColor="White" Margin="20,2" BackgroundColor="Transparent">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+                        <controls:CustomEditor Text="{Binding Description, Mode=TwoWay}" FontSize="12" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="White" Grid.Column="1" Placeholder="Faça aqui uma descrição do seu vídeo com até 200 caracteres" MaxLength="200" PlaceholderColor="White" />
+                    </Grid>
+                </Frame>
+                <Frame Grid.Column="0" CornerRadius="14" Grid.Row="2" Padding="0" BorderColor="White" HeightRequest="40" Margin="20,2,5,0" BackgroundColor="Transparent">
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowHashtagsCommand}">
+                            </TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1" FontSize="15" VerticalOptions="Center" Text="#HASHTAGS" HorizontalOptions="Center" />
+                    </Grid>
+                </Frame>
+                <Frame Grid.Column="1" CornerRadius="14" Grid.Row="2" Padding="0" BorderColor="White" HeightRequest="40" Margin="5,2,20,0" BackgroundColor="Transparent">
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowCategoriesCommand}">
+                            </TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1" FontSize="15" VerticalOptions="Center" Text="CATEGORIAS" HorizontalOptions="Center" />
+                    </Grid>
+                </Frame>
+            </Grid>
+            <Grid Padding="20,10" Margin="0,0,0,10" Grid.Row="3">
+                <Frame BackgroundColor="#008cff" Padding="0" CornerRadius="5">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PublishCommand}" />
+                    </Frame.GestureRecognizers>
+                    <Label Text="PUBLICAR" HorizontalOptions="Center" FontSize="20" VerticalOptions="Center" />
+                </Frame>
+            </Grid>
+        </Grid>
+        <Grid IsVisible="{Binding IsHashtags}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70">
+                </RowDefinition>
+                <RowDefinition Height="40">
+                </RowDefinition>
+                <RowDefinition Height="45">
+                </RowDefinition>
+                <RowDefinition Height="Auto">
+                </RowDefinition>
+                <RowDefinition Height="*">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Black" Opacity="0.8" Grid.Row="0" Grid.RowSpan="5" />
+            <StackLayout Margin="0,10,0,0">
+                <Grid HeightRequest="58">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="arrow.png" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Hashtags">
+                    </Label>
+                </Grid>
+                <Grid BackgroundColor="White" HeightRequest="2">
+                </Grid>
+            </StackLayout>
+            <Frame Grid.Row="1" CornerRadius="14" Padding="0" BorderColor="White" HeightRequest="40" Margin="20,2" BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <controls:CustomEntry Text="{Binding CurrentHashtag, Mode=TwoWay}" FontSize="12" HorizontalOptions="FillAndExpand" TextColor="White" Grid.Column="1" Placeholder="#Digite aqui sua Hashtag" PlaceholderColor="White" />
+                </Grid>
+            </Frame>
+            <StackLayout Grid.Row="2">
+                <Grid HeightRequest="58">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="40,0,0,0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12" VerticalOptions="Center" Text="{Binding SelectedHashtags}">
+                    </Label>
+                </Grid>
+                <Grid BackgroundColor="White" HeightRequest="2">
+                </Grid>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding HasHashtags}" Grid.Row="3">
+                <Grid HeightRequest="58">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="150">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="40,0,0,0" Grid.Column="0" FontSize="20" VerticalOptions="Center" Text="{Binding CurrentHashtag}">
+                    </Label>
+                    <Frame Grid.Column="1" CornerRadius="14" Padding="0" HorizontalOptions="End" BorderColor="White" VerticalOptions="Center" HeightRequest="27" Margin="0,0,20,0" BackgroundColor="Transparent">
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AddHashtagCommand}" CommandParameter="{Binding CurrentHashtag}">
+                                </TapGestureRecognizer>
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1" FontSize="10" VerticalOptions="Center" Text="+ ADICIONAR" HorizontalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </Grid>
+                <Grid BackgroundColor="White" HeightRequest="2">
+                </Grid>
+            </StackLayout>
+            <ListView Grid.Row="4" BackgroundColor="Transparent" HasUnevenRows="true" SelectionMode="None" SeparatorColor="Transparent" ItemsSource="{Binding SuggestedTags}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid HeightRequest="58">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*">
+                                        </ColumnDefinition>
+                                        <ColumnDefinition Width="150">
+                                        </ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Margin="40,0,0,0" Grid.Column="0" FontSize="20" VerticalOptions="Center" Text="{Binding .}">
+                                    </Label>
+                                    <Frame Grid.Column="1" CornerRadius="14" Padding="0" HorizontalOptions="End" BorderColor="White" VerticalOptions="Center" HeightRequest="27" Margin="0,0,20,0" BackgroundColor="Transparent">
+                                        <Grid>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.AddHashtagCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                                </TapGestureRecognizer>
+                                            </Grid.GestureRecognizers>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="10" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="1" FontSize="10" VerticalOptions="Center" Text="+ ADICIONAR" HorizontalOptions="Center" />
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                                <Grid BackgroundColor="White" HeightRequest="2">
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid IsVisible="{Binding IsCategories}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70">
+                </RowDefinition>
+                <RowDefinition Height="45">
+                </RowDefinition>
+                <RowDefinition Height="*">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Black" Opacity="0.8" Grid.Row="0" Grid.RowSpan="3" />
+            <StackLayout Margin="0,10,0,0">
+                <Grid HeightRequest="58">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="arrow.png" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Categorias">
+                    </Label>
+                </Grid>
+                <Grid BackgroundColor="White" HeightRequest="2">
+                </Grid>
+            </StackLayout>
+            <Frame Grid.Row="1" CornerRadius="14" Padding="0" BorderColor="White" HeightRequest="40" Margin="20,2" BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <controls:CustomEntry Text="{Binding CategorySearchTerm, Mode=TwoWay}" FontSize="12" HorizontalOptions="FillAndExpand" TextColor="White" Grid.Column="1" Placeholder="Busque uma categoria" PlaceholderColor="White" />
+                </Grid>
+            </Frame>
+            <ListView Grid.Row="2" BackgroundColor="Transparent" HasUnevenRows="true" SelectionMode="None" SeparatorColor="Transparent" ItemsSource="{Binding Categories}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Grid.Row="2">
+                                <Grid HeightRequest="58">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*">
+                                        </ColumnDefinition>
+                                        <ColumnDefinition Width="Auto">
+                                        </ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Margin="40,0,0,0" Grid.Column="0" FontSize="20" VerticalOptions="Center" Text="{Binding Name}">
+                                    </Label>
+                                    <Frame IsVisible="{Binding IsSelectedForPost, Converter={StaticResource BooleanInverterConverter}}" Grid.Column="1" BackgroundColor="Transparent" BorderColor="White" HorizontalOptions="Center" WidthRequest="10" HeightRequest="10" CornerRadius="25" Margin="0,0,20,0" VerticalOptions="Center">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.SelectCategoryCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                    <Frame IsVisible="{Binding IsSelectedForPost}" Grid.Column="1" BackgroundColor="#fce200" HorizontalOptions="Center" WidthRequest="10" HeightRequest="10" CornerRadius="25" Margin="0,0,20,0" VerticalOptions="Center">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.SelectCategoryCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                </Grid>
+                                <Grid BackgroundColor="White" HeightRequest="2">
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid IsVisible="{Binding IsLoading}">
+            <Grid BackgroundColor="{StaticResource AppBackgroundColor}" Opacity="0.8">
+            </Grid>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="White" VerticalOptions="Center">
+                </ActivityIndicator>
+                <Label Text="{Binding LoadingMessage}" TextColor="White" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+</views:MvxContentPage>

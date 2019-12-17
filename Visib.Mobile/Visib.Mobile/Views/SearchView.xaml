@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:Visib.Mobile.Controls" BackgroundColor="{StaticResource AppBackgroundColor}" xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Visib.Mobile.Views.SearchView">
+    <Grid x:Name="MainGrid">
+        <Grid Padding="0,40,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40">
+                </RowDefinition>
+                <RowDefinition Height="*">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Frame CornerRadius="20" WidthRequest="300" Padding="0" BorderColor="White" HeightRequest="46" HorizontalOptions="Center" BackgroundColor="Transparent">
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="20">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <controls:CustomEntry TextColor="White" FontSize="15" Grid.Column="1" Text="{Binding SearchTerm}" HorizontalTextAlignment="Center" Placeholder="Usuário, título, categoria ou hashtag" PlaceholderColor="White">
+                    </controls:CustomEntry>
+                </Grid>
+                </Frame>
+                
+            </Grid>
+            <flv:FlowListView BackgroundColor="Transparent" FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="true" Grid.Row="1" FlowItemsSource="{Binding Posts}">
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <Grid Padding="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                             <ffimageloading:CachedImage HeightRequest="250" WidthRequest="150" Aspect="AspectFill" DownsampleToViewSize="true" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Source="{Binding VideoCover}">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.ShowVideoCommand, Source={x:Reference MainGrid}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+                            <Grid HorizontalOptions="Start" VerticalOptions="End" Margin="20">
+                                <StackLayout IsVisible="{Binding HasUserApplause, Converter={StaticResource BooleanInverterConverter}}">
+                                    <Image HorizontalOptions="Center" Source="clap.png" />
+                                    <Label HorizontalOptions="Center" FontSize="13" Text="{Binding ApplauseCount}">
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout IsVisible="{Binding HasUserApplause}">
+                                    <Image HorizontalOptions="Center" Source="userClap.png" />
+                                    <Label HorizontalOptions="Center" FontSize="13" Text="{Binding ApplauseCount}">
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+        </Grid>
+        <Grid IsVisible="{Binding IsLoading}">
+            <Grid BackgroundColor="{StaticResource AppBackgroundColor}" Opacity="0.8">
+            </Grid>
+            <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="White" VerticalOptions="Center">
+            </ActivityIndicator>
+        </Grid>
+    </Grid>
+</views:MvxContentPage>
